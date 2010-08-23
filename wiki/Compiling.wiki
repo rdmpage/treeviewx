@@ -46,3 +46,102 @@ You may find that this isn't enough, especially on a new installation of Linux (
 /usr/local/lib
 }}}
 to the file /etc/ld.so.conf
+
+==Windows==
+This assumes we are using Borland's free C++ compiler, and that we are using wxWindows as a DLL (faster linking times compared to static version). Hence, download and install wxWidgets source, then compile as a DLL using Borland C++ 5.5
+{{{
+make -f makefile.b32 DLL=1
+}}}
+
+=Compile program=
+
+==Mac OS X==
+Ultimately I hope to be able to build TreeView using the GNU make tools, but I'm not quite there yet. Meantime, TreeView X can be built using the XCode project file tv.xcode supplied with the Mac OS X source code. You can also use Project Builder on Mac 10.2, but the results aren't quite so pretty.
+
+==Unix==
+Follow the usual steps for a building a Unix program:
+{{{
+./configure
+make
+make install
+}}}
+
+You can then run the program by typing
+{{{
+tv
+}}}
+at the command line.
+
+==Windows==
+The build system for Windows is not quite automatic yet, so you need to do the following:
+
+===Build the NEXUS class library===
+{{{
+cd ncl-2.0/src
+make -f makefile.b32	
+}}}
+
+===Build the expatpp XML library===
+{{{
+cd expatpp
+make -f makefile.b32	
+}}}
+===Go to the root of the source directory and make tv itself===
+{{{
+make -f makefile.b32
+}}}
+
+=Packaging for distribution=
+
+Instructions for building packages for installation.
+
+==Source for Linux/Unix/Mac OS X==
+Just go 
+{{{
+make dist
+}}}
+to build a gzipped tarball of the sources.
+
+==Mac OS X binary==
+You could just stuff the executable, but I create a dmg file using [http://c-command.com/dropdmg/ DropDMG]. Simply drop the application on the DropDMG icon to create the dmg file.
+
+==RPMs for Linux==
+This assumes you've set up the ~/.rpmmacros file in your home directory, e.g. see http://www.kayos.org/download/rpm-tutorial.html. My file is
+{{{
+%packager      Roderic D. M. Page 
+%distribution  Roderic D. M. Page
+%vendor        Roderic D. M. Page
+
+%_topdir       /home/rpage/rpm
+}}}
+  # Make a tarball of the sources
+{{{
+make dist
+}}}
+  # Copy tarball (e.g., tv-0.4.1.tar.gz) to $HOME/rpm/SOURCES
+  # Copy tv.spec to $HOME/rpm/SPECS
+  # To build RPM
+{{{
+cd $HOME/rpm/SPECS
+rpmbuild -ba tv.spec
+}}}
+
+To test, uninstall program and then install the RPM (as superuser).
+{{{
+	rpm -i tv-0.4-1.i386.rpm
+}}}
+
+==Windows==
+===Windows source===
+
+Make sure you have zip installed and on your path (you can get a copy from http://www.info-zip.org/Zip.html or one of its mirrors, such as http://www.mirror.ac.uk/sites/ftp.info-zip.org/pub/infozip/).
+
+  # List all relevant source, resource, and make files are listed in tv.rsp.
+  # Run the batch file makedist.bat
+
+===Windows binary===
+
+I use Inno Setup from http://www.jrsoftware.org/isinfo.php We need an installer to copy across the DLLs required, as well as create the necessary keys in the Windows registry to associate the correct files with TreeView X. The installer also provide the ability to uninstall the program.
+
+  # Open the file tv.iss in Inno Setup.
+  # Make sure that you distribute both the wxWindows DLL (found in the lib directory of your wxWindows installation, e.g., wx24d_bcc.dll) and the Borland C++ runtime (cc3250mt.dll, found in the bin directory of your Borland installation, e.g. c:\borland\bcc55\bin). These are set in the distribution version of tv.iss, but you may have to alter the paths for your installation.
