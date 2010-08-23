@@ -1,13 +1,48 @@
 #summary How to compile TreeView X
 
-= Introduction =
+These instructions are relevent if you want to compile the program yourself, rather than use one of the binaries. The instructions are partly intended as notes to myself to remind me how I did various things. One of the joys of supporting multiple platforms is trying to get to grips with the individual quirks.
 
-Add your content here.
+= Install wxWidgets =
 
+wxWidgets is an open source cross-platform C++ library.
 
-= Details =
+== Unix (including Linux and Mac OS X) ==
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+===Step 1: Build and install wxWidgets===
+
+You can get the latest stable and development releases of wxWidgets from [http://www.wxwidgets.org wxWidgets.org]. 
+
+I build the static libraries for wxWidgets to make it easier to distribute the binaries. Hence, the Mac OS X XCode project file assumes you have static libraries (you could build the Linux version with either static or dynamic libraries). To build the static libraries you can do the following:
+{{{
+./configure --enable-static=yes
+}}}
+Thereafter it's the usual story:
+{{{
+make
+make install
+}}}
+with the install step requiring you to be superuser.
+
+===Step 2: Compile SVG support===
+
+After building and installing wxWidgets, go to the contrib/src/svg folder in the root of the wxWidgets folder and make and install dcsvg:
+{{{
+cd contrib/src/svg
+make
+make install
+}}}
+This adds support for SVG files for creating picture files.
+
+===Update library===
+
+On some systems (such as Linux) you should run ldconfig to update the library locations. You will need to do this as superuser:
+{{{
+	su
+	/sbin/ldconfig
+}}}
+
+You may find that this isn't enough, especially on a new installation of Linux (for example, I had this problem on Fedora Core 13). In this case, you may need to add the line
+{{{
+/usr/local/lib
+}}}
+to the file /etc/ld.so.conf
