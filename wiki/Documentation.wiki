@@ -2,4 +2,4 @@
 
 = Introduction =
 
-At present there is is no manual for !TreeView X. In the meantime please see the [http://taxonomy.zoology.gla.ac.uk/rod/treeview/treeview_manual.html online documentation for TreeView] (remember that !TreeView X has only a subset of the features of !TreeView).
+At present there is no manual for !TreeView X. In the meantime please see the [http://taxonomy.zoology.gla.ac.uk/rod/treeview/treeview_manual.html online documentation for TreeView] (remember that !TreeView X has only a subset of the features of !TreeView).
