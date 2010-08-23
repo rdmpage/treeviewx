@@ -1,4 +1,5 @@
 #summary How to compile TreeView X
+#labels Featured,Phase-Implementation
 
 These instructions are relevent if you want to compile the program yourself, rather than use one of the binaries. The instructions are partly intended as notes to myself to remind me how I did various things. One of the joys of supporting multiple platforms is trying to get to grips with the individual quirks.
 
