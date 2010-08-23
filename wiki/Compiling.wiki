@@ -56,7 +56,7 @@ make -f makefile.b32 DLL=1
 =Compile program=
 
 ==Mac OS X==
-Ultimately I hope to be able to build TreeView using the GNU make tools, but I'm not quite there yet. Meantime, TreeView X can be built using the XCode project file tv.xcode supplied with the Mac OS X source code. You can also use Project Builder on Mac 10.2, but the results aren't quite so pretty.
+Ultimately I hope to be able to build !TreeView using the GNU make tools, but I'm not quite there yet. Meantime, !TreeView X can be built using the XCode project file tv.xcode supplied with the Mac OS X source code. You can also use Project Builder on Mac 10.2, but the results aren't quite so pretty.
 
 ==Unix==
 Follow the usual steps for a building a Unix program:
@@ -141,7 +141,7 @@ Make sure you have zip installed and on your path (you can get a copy from http:
 
 ===Windows binary===
 
-I use Inno Setup from http://www.jrsoftware.org/isinfo.php We need an installer to copy across the DLLs required, as well as create the necessary keys in the Windows registry to associate the correct files with TreeView X. The installer also provide the ability to uninstall the program.
+I use Inno Setup from http://www.jrsoftware.org/isinfo.php We need an installer to copy across the DLLs required, as well as create the necessary keys in the Windows registry to associate the correct files with !TreeView X. The installer also provide the ability to uninstall the program.
 
   # Open the file tv.iss in Inno Setup.
   # Make sure that you distribute both the wxWindows DLL (found in the lib directory of your wxWindows installation, e.g., wx24d_bcc.dll) and the Borland C++ runtime (cc3250mt.dll, found in the bin directory of your Borland installation, e.g. c:\borland\bcc55\bin). These are set in the distribution version of tv.iss, but you may have to alter the paths for your installation.
