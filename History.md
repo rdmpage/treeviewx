@@ -1,0 +1,3 @@
+This project began while was on a EMBO Fellowship at the DKFZ in Heidleberg in the summmer of 2000. Heiko Schmidt convinced me that porting TreeView to Linux would be a good idea.
+
+The project makes use of an early version of Paul Lewis' Nexus Class Library (see [NCL: a C++ class library for interpreting data files in NEXUS format](http://dx.doi.org/10.1093/bioinformatics/btg319)). However the NCL code TreeView X useshas diverged somewhat from the current [NCL project](http://sourceforge.net/projects/ncl/).
